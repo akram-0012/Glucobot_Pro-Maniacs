@@ -1,0 +1,86 @@
+
+#include <LiquidCrystal.h>
+
+  CloudLight led;
+  int voltage;
+  int avg;
+  
+LiquidCrystal lcd(19, 23, 18, 17, 16, 15);
+ 
+#include "thingProperties.h"
+const int irLed = 34;
+int iled = 32;
+int sg=0;
+int i=0;
+void setup()
+{
+ 
+
+  // Initialize serial and wait for port to open:
+  Serial.begin(9600);
+  // This delay gives the chance to wait for a Serial Monitor without blocking if none is found
+  delay(1500);
+  pinMode(iled, OUTPUT);
+  // Defined in thingProperties.h
+  initProperties();
+
+  // Connect to Arduino IoT Cloud
+  ArduinoCloud.begin(ArduinoIoTPreferredConnection);
+
+  
+  setDebugMessageLevel(2);
+  ArduinoCloud.printDebugInfo();
+   lcd.begin(16, 2);
+  // Print a message to the LCD.
+  lcd.print("Pro Maniacs");
+}
+
+void loop() {
+  ArduinoCloud.update();
+   if(led==1)
+   { avg=0;
+     sg=0;
+    for(i=0;i<21;i++)
+      {
+       
+       voltage = analogRead(irLed);
+       avg = voltage + avg;
+       i++;
+      Serial.print(" VOLTAGE = ");
+      Serial.println(voltage);
+      delay(1000);
+       
+      }
+  avg = avg/11;
+  sg = (avg-252)/0.6;
+  Serial.print("AVG VALUE = ");
+  Serial.println(avg);
+  Serial.print("Sugar level =");
+  Serial.println(sg);
+ 
+  delay(1000);
+   }
+  led=0;  
+   
+   lcd.setCursor(0, 0);
+   lcd.print("Glucsose level :");
+   lcd.setCursor(6,1);
+   lcd.print(sg);
+   lcd.setCursor(10,1);
+   lcd.print("mg/dl");
+   
+}
+
+
+void onLedChange()  {
+  // Add your code here to act upon Led change
+  if (led == 1)
+  {
+    digitalWrite(iled, HIGH);
+  }
+  else
+  {
+    digitalWrite(iled, LOW);
+  }
+}
+
