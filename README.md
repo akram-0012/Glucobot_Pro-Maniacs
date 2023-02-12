@@ -14,9 +14,15 @@ The glucose has absorption in the range of 750–2500 nm wavelength (940nm wavel
 When the light signal (I0) of selected wavelength is passed through blood sample, the signal is absorbed by the sample depending upon the concentration of glucose and this signal after absorption (I) is detected by the detector. 
 
 The glucose level can be estimated using equation 1. Important Hardware requirements: 
+
 An IR LED of 940nm wavelength 
+
 AN IR receiver 
+
 A ESP32- system on a chip microcontroller with integrated bluetooth and wifi 
+
 A LCD display
+
 A constant voltage supply 
+
 A box
