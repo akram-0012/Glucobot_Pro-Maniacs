@@ -1,4 +1,7 @@
 # Glucobot_Pro-Maniacs
+
+Youtube Link: https://youtu.be/zOltJHRuAK4
+
 Now a days, Diabetes has become an important life style related metabolic disorder. Normally, the estimation of glucose level is done by taking blood from the patient. There is a great demand to detect blood sugar without taking blood sample. Hence it is proposed to develop a non-invasive optical based glucose detection system.
 
 Idea: The detection of glucose will be based on absorption spectroscopy. The Beer Lambert Law will be applied to detect glucose in the blood. When the incident light is incident on the body, apart of it is absorbed by the species present in the sample.
